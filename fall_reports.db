@@ -1,0 +1,61 @@
+-- Main table to store the primary report data
+CREATE TABLE reports (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    elderly_name TEXT NOT NULL,
+    was_fall_last_3_months BOOLEAN,
+    accident_date TEXT, -- Store date as a string (ISO format recommended)
+    accident_time TEXT, -- Store time as a string (e.g., HH:MM:SS)
+    accident_place TEXT,
+    witness TEXT,
+    staff_comment TEXT
+);
+
+-- Tables for list fields (fallReason, userActivity, precedingSymptoms, etc.)
+CREATE TABLE fall_reasons (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    report_id INTEGER,
+    reason TEXT,
+    FOREIGN KEY (report_id) REFERENCES reports(id) ON DELETE CASCADE
+);
+
+CREATE TABLE user_activities (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    report_id INTEGER,
+    activity TEXT,
+    FOREIGN KEY (report_id) REFERENCES reports(id) ON DELETE CASCADE
+);
+
+CREATE TABLE preceding_symptoms (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    report_id INTEGER,
+    symptom TEXT,
+    FOREIGN KEY (report_id) REFERENCES reports(id) ON DELETE CASCADE
+);
+
+CREATE TABLE fall_consequences (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    report_id INTEGER,
+    consequence TEXT,
+    FOREIGN KEY (report_id) REFERENCES reports(id) ON DELETE CASCADE
+);
+
+CREATE TABLE injury_types (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    report_id INTEGER,
+    injury TEXT,
+    FOREIGN KEY (report_id) REFERENCES reports(id) ON DELETE CASCADE
+);
+
+CREATE TABLE taken_measures (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    report_id INTEGER,
+    measure TEXT,
+    FOREIGN KEY (report_id) REFERENCES reports(id) ON DELETE CASCADE
+);
+
+CREATE TABLE report_photos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    report_id INTEGER,
+    photo_uri TEXT, -- Assuming you store the URI of the photo
+    FOREIGN KEY (report_id) REFERENCES reports(id) ON DELETE CASCADE
+);
