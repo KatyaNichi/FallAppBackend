@@ -108,7 +108,7 @@ initializeDatabase(db)
         injuryType = [],
         takenMeasures = [],
         photos = [],
-        additionalContent
+        additionalContent = "" 
       } = req.body;
 
       db.serialize(() => {
@@ -236,6 +236,8 @@ initializeDatabase(db)
             ]).then(([fallReason, userActivity, precedingSymptoms, fallConsequence, injuryType, takenMeasures, photos]) => {
               return {
                 ...report,
+                was_fall_inside: report.was_fall_inside === 1,
+                was_fall_last_3_months: report.was_fall_last_3_months === 1,
                 fallReason,
                 userActivity,
                 precedingSymptoms,
