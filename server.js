@@ -14,7 +14,9 @@ function initializeDatabase(db) {
       accident_time TEXT,
       accident_place TEXT,
       witness TEXT,
-      additional_content TEXT
+      additional_content TEXT, 
+      person_number TEXT,
+      was_fall_inside BOOLEAN 
     );
 
     CREATE TABLE IF NOT EXISTS fall_reasons (
@@ -96,6 +98,8 @@ initializeDatabase(db)
         accidentDate,
         accidentTime,
         accidentPlace,
+        personNumber,  
+        wasFallInside,
         fallReason = [],
         userActivity = [],
         precedingSymptoms = [],
@@ -112,12 +116,13 @@ initializeDatabase(db)
 
         // Insert into reports table
         const reportQuery = `
-          INSERT INTO reports (elderly_name, was_fall_last_3_months, accident_date, accident_time, accident_place, witness, additional_content)
-          VALUES (?, ?, ?, ?, ?, ?, ?)
+          INSERT INTO reports (elderly_name, was_fall_last_3_months, accident_date, accident_time, accident_place, witness, additional_content, person_number, was_fall_inside)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         `;
 
-        db.run(reportQuery, [elderlyname, wasFallLast3Months, accidentDate, accidentTime, accidentPlace, witness, additionalContent], function(err) {
+        db.run(reportQuery, [elderlyname, wasFallLast3Months, accidentDate, accidentTime, accidentPlace, witness, additionalContent, personNumber, wasFallInside], function(err) {
           if (err) {
+            console.error("Error inserting report:", err); // Log the error
             db.run("ROLLBACK");
             return res.status(500).json({ error: err.message });
           }

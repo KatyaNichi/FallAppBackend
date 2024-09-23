@@ -8,6 +8,8 @@ CREATE TABLE reports (
     accident_place TEXT,
     witness TEXT,
     staff_comment TEXT
+    person_number TEXT,
+    was_fall_inside BOOLEAN 
 );
 
 -- Tables for list fields (fallReason, userActivity, precedingSymptoms, etc.)
