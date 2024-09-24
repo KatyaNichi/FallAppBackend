@@ -2,14 +2,14 @@
 CREATE TABLE reports (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     elderly_name TEXT NOT NULL,
-    was_fall_last_3_months BOOLEAN,
+    was_fall_last_3_months TEXT,
     accident_date TEXT, -- Store date as a string (ISO format recommended)
     accident_time TEXT, -- Store time as a string (e.g., HH:MM:SS)
     accident_place TEXT,
     witness TEXT,
     staff_comment TEXT
     person_number TEXT,
-    was_fall_inside BOOLEAN 
+    was_fall_inside BOOLEAN
 );
 
 -- Tables for list fields (fallReason, userActivity, precedingSymptoms, etc.)

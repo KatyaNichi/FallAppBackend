@@ -9,14 +9,14 @@ function initializeDatabase(db) {
     CREATE TABLE IF NOT EXISTS reports (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       elderly_name TEXT NOT NULL,
-      was_fall_last_3_months BOOLEAN,
+      was_fall_last_3_months TEXT,
       accident_date TEXT,
       accident_time TEXT,
       accident_place TEXT,
       witness TEXT,
       additional_content TEXT, 
       person_number TEXT,
-      was_fall_inside TEXT
+      was_fall_inside BOOLEAN
     );
 
     CREATE TABLE IF NOT EXISTS fall_reasons (
