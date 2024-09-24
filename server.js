@@ -16,7 +16,7 @@ function initializeDatabase(db) {
       witness TEXT,
       additional_content TEXT, 
       person_number TEXT,
-      was_fall_inside BOOLEAN 
+      was_fall_inside TEXT
     );
 
     CREATE TABLE IF NOT EXISTS fall_reasons (
@@ -237,7 +237,7 @@ initializeDatabase(db)
               return {
                 ...report,
                 was_fall_inside: report.was_fall_inside === 1,
-                was_fall_last_3_months: report.was_fall_last_3_months === 1,
+                was_fall_last_3_months: report.was_fall_last_3_months,
                 fallReason,
                 userActivity,
                 precedingSymptoms,
