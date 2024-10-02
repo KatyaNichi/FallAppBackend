@@ -5,7 +5,7 @@ const cors = require("cors")
 const port = process.env.PORT || 3000
 
 // Function to initialize the database
-function initializeDatabase(db) {
+async function initializeDatabase(db) {
 	const schema = `
     CREATE TABLE IF NOT EXISTS reports (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -89,7 +89,6 @@ app.use(
 	})
 )
 app.use(express.json())
-app.use(cors())
 
 console.log("Starting server...")
 
