@@ -51,7 +51,7 @@ git clone https://github.com/frontendprg/fallDashboard
    - Open `src/utils/reportAPI.js`
    - Locate the line: `const API_BASE_URL = "http://172.24.11.211:3000"`
    - Replace `172.24.11.211` with your IP address
-     - You can find your IP address by running `ifconfig en0 inet` in the terminal
+     - You can find your IP address by running `ifconfig` in the terminal
 
 4. Start the Expo development server:
    ```bash
